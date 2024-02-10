@@ -5,6 +5,10 @@ client = OpenAI()
 
 # Example dummy function hard coded to return the same weather
 # In production, this could be your backend API or an external API
+# The variables as well as their respective data values can be edited and rearranged to potentially fit our needs with the following conceptual changes
+# to location, unit, and temperature to productID, USD, and avg and/or monthly sales respectively.
+# Additional variables can be initialized to account for Product price, Number of products sold, and frequent shoppers (if a membership feature
+# is ever implemented) 
 def get_current_weather(location, unit="fahrenheit"):
     """Get the current weather in a given location"""
     if "tokyo" in location.lower():
