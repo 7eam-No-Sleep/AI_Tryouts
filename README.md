@@ -1,5 +1,5 @@
 # AI_Tryouts
-Test different AI capabilities to decide on the best deployable module
+Test different AI capabilities to decide on the best deployable model
 
 _________________________________________________________________________________
 Guides/Documentation on calling functions with chat models:
