@@ -1,4 +1,4 @@
-# AI_Tryouts
+# HoneycombQuery 
 Test different AI capabilities to decide on the best deployable module
 _________________________________________________________________________________
 Current OpenAi chat model in development: translates natural language to SQL Queries.
@@ -8,7 +8,7 @@ made by the AI assistant, which is then displayed to the user.
 
 _________________________________________________________________________________
 Guides/Documentation on working with chat models and OpenAi's APIs:
-(The Documentation and API Reference tabs in OpenAI's Playground is extremely useful) 
+(The Documentation and API Reference tabs in OpenAI's Playground are extremely useful) 
 
 https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models
 
