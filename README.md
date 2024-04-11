@@ -1,5 +1,7 @@
 # HoneycombQuery 
-Test different AI capabilities to decide on the best deployable module
+Translates natural language into executable SQL statements.
+To see the AI in action and test the translation accuracy from varying user prompts, click the link below:
+https://platform.openai.com/playground/p/lQsvWKhgLlKXZwNKZFxhMjeF?model=gpt-3.5-turbo&mode=chat
 _________________________________________________________________________________
 Current OpenAi chat model in development: translates natural language to SQL Queries.
 
