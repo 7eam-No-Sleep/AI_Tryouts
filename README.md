@@ -3,10 +3,10 @@ Translates natural language into executable SQL statements.
 To see the AI in action and test the translation accuracy from varying user prompts, click the link below:
 https://platform.openai.com/playground/p/lQsvWKhgLlKXZwNKZFxhMjeF?model=gpt-3.5-turbo&mode=chat
 _________________________________________________________________________________
-Current OpenAi chat model in development: translates natural language to SQL Queries.
-
-The goal is to have the assistant's reply called in a separate function that executes the query 
-made by the AI assistant, which is then displayed to the user.
+The goal is to have the AI assistant's reply sent to a designated data table 
+exclusively reserved for the AI's SQL statements. Which is then called by a hardcoded
+SQL statement inside of a script that executes the AI's original SQL statement 
+in our inventory_management database.
 
 _________________________________________________________________________________
 Guides/Documentation on working with chat models and OpenAi's APIs:
