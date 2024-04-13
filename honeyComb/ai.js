@@ -162,6 +162,7 @@ if (response && response.data && response.data.choices && response.data.choices.
 
 
 
-
-//export apiKey command (bash): export OPENAI_API_KEY=your_api_key
-//  ^-------------------(Powershell): $env:OPENAI_API_KEY = "your_api_key" <- (include the quotations with your actual secret key)
+// Once in the project directory:
+//run the following commands to export apiKey: 
+//  (bash): export OPENAI_API_KEY=your_api_key
+//  (Powershell): $env:OPENAI_API_KEY = "your_api_key" <- (include the quotations with your api key)
