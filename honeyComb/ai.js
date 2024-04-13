@@ -130,7 +130,7 @@ const response = await openai.chat.completions.create({
     // document.getElementById('textbox').addEventListener('input', function(event) {
     //   console.log('Text changed:', event.target.value);
     // }),
-    // ^---- Uncomment after the text box is setup and working properly ----^
+    // ^---- Will uncomment after the text box is setup and working properly ----^
 
     {
       "role": "user",
@@ -161,18 +161,6 @@ if (response && response.data && response.data.choices && response.data.choices.
 
 
 
-
-//console.log(response.data.choices[0].text);
-
-
-
-
-// const response = await openai.completions.create({
-//     model: "gpt-3.5-turbo",
-//     prompt: "Say this is a test.",
-//     max_tokens: 7,
-//     temperature: 0,
-//   });
 
 
 //export apiKey command (bash): export OPENAI_API_KEY=your_api_key
