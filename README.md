@@ -2,6 +2,8 @@
 Translates natural language into executable SQL statements.
 To see the AI in action and test the translation accuracy from varying user prompts, click the link below:
 https://platform.openai.com/playground/p/lQsvWKhgLlKXZwNKZFxhMjeF?model=gpt-3.5-turbo&mode=chat
+The API Key will need to be reset to an env value in the deployment environment. 
+(The bash and ps command to export the api key can be found at the bottom of ai.js) 
 _________________________________________________________________________________
 The goal is to have the AI assistant's reply sent to a designated data table 
 exclusively reserved for the AI's SQL statements. Which is then called by a hardcoded
