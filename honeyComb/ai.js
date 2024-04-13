@@ -8,6 +8,7 @@ const openai = new OpenAI({
 });
 /** -- Original message strings in case the formatting broke the prompt: --
  * 
+ * 
  * -- "system" content: -- 
  * content": "Given the following SQL tables, your job is to write queries given a user’s request.\n    \n    CREATE TABLE Orders (\n      OrderID int,\n      CustomerID int,\n      OrderDate datetime,\n      OrderTime varchar(8),\n      PRIMARY KEY (OrderID)\n    );\n    \n    CREATE TABLE OrderDetails (\n      OrderDetailID int,\n      OrderID int,\n      ProductID int,\n      Quantity int,\n      PRIMARY KEY (OrderDetailID)\n    );\n    \n    CREATE TABLE Products (\n      ProductID int,\n      ProductName varchar(50),\n      Category varchar(50),\n      UnitPrice decimal(10, 2),\n      Stock int,\n      PRIMARY KEY (ProductID)\n    );\n    \n    CREATE TABLE Customers (\n      CustomerID int,\n      FirstName varchar(50),\n      LastName varchar(50),\n      Email varchar(100),\n      Phone varchar(20),\n      PRIMARY KEY (CustomerID)\n    );"
  * 
@@ -16,6 +17,27 @@ const openai = new OpenAI({
  *
  *  --------------------------------------------------------------------------
  */
+
+//Pulls the user input from the wuery text box to be used as the AI prompt.
+document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('textBoxForm');
+  
+  form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent default form submission
+      
+      // Get the user input from the text box
+      const userInput = document.getElementById('textbox').value;
+      
+      // Call the function in ai.js with the user input
+      processUserInput(userInput);
+  });
+});
+
+function processUserInput(userInput) {
+  // Call another function in your ai.js file or perform any other processing with the user input
+  console.log('User input:', userInput);
+}
+
 const response = await openai.chat.completions.create({ 
   model: "gpt-3.5-turbo",
   messages: [
@@ -102,22 +124,25 @@ const response = await openai.chat.completions.create({
       "\n      Email varchar(100),"+
       "\n      PRIMARY KEY (CustomerID)\n    );"
     },
+
+    // Code for any JavaScript functionality can go here, such as event handling or data manipulation
+    // For example, if you want to do something when the text in the textbox changes:
+    // document.getElementById('textbox').addEventListener('input', function(event) {
+    //   console.log('Text changed:', event.target.value);
+    // }),
+    // ^---- Uncomment after the text box is setup and working properly ----^
+
     {
       "role": "user",
-      "content": "Write a SQL query which computes the average total order value for all orders on 2023-04-01."
+      "content": "What items are currently out of stock?"// uncomment after textbox is functioning -->document.getElementById('textbox').value
     },
     {
       "role": "assistant",
       "content": "```sql"+
-      "\nSELECT AVG(TotalOrderValue) AS AverageTotalOrderValue"+
-      "\nFROM ("+
-      "\n    SELECT o.OrderID, SUM(od.Quantity * p.UnitPrice) AS TotalOrderValue"+
-      "\n    FROM Orders o"+
-      "\n    JOIN OrderDetails od ON o.OrderID = od.OrderID"+
-      "\n    JOIN Products p ON od.ProductID = p.ProductID"+
-      "\n    WHERE o.OrderDate = '2023-04-01'"+
-      "\n    GROUP BY o.OrderID"+
-      "\n) AS OrderTotals;"+
+      "\nSELECT TOP 1 ProductID, SUM(QuantitySold) AS TotalQuantitySold"+
+      "\nFROM items_sold"+
+      "\nGROUP BY ProductID"+
+      "\nORDER BY TotalQuantitySold DESC"+
       "\n```"
     }
   ],
@@ -128,7 +153,16 @@ const response = await openai.chat.completions.create({
   presence_penalty: 0,
 });
 
-console.log(response.data.choices[0].text);
+if (response && response.data && response.data.choices && response.data.choices.length > 0) {
+  console.log(response.data.choices[0].text);
+} else {
+  console.error("Invalid response format:", response);
+}
+
+
+
+
+//console.log(response.data.choices[0].text);
 
 
 
